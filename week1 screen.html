@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Gallery</title>
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            margin: 10px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .filter-buttons {
+            margin-bottom: 20px;
+        }
+        .filter-buttons button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="filter-buttons">
+        <button data-filter="all">All</button>
+        <button data-filter="nature">Nature</button>
+        <button data-filter="city">City</button>
+        <button data-filter="animals">Animal</button>
+    </div>
+    <div class="gallery">
+        <img src="nature1.jpg" data-category="nature">
+        <img src="city1.jpg" data-category="city">
+        <img src="animal.png" data-category="animals">
+        <img src="nature2.jpg" data-category="nature">
+        <img src="city2.jpg" data-category="city">
+    </div>
+
+    <script>
+        document.querySelectorAll('.filter-buttons button').forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                document.querySelectorAll('.gallery img').forEach(img => {
+                    if (filter === 'all' || img.getAttribute('data-category') === filter) {
+                        img.style.display = 'block';
+                    } else {
+                        img.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

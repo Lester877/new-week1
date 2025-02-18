@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number List Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        #numberList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #numberList li {
+            margin: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <button id="generateButton">Generate List</button>
+    <ul id="numberList"></ul>
+
+    <script>
+        document.getElementById('generateButton').addEventListener('click', () => {
+            const numberList = document.getElementById('numberList');
+            numberList.innerHTML = ''; // Clear previous list
+            for (let i = 1; i <= 10; i++) {
+                const listItem = document.createElement('li');
+                listItem.textContent = i;
+                numberList.appendChild(listItem);
+            }
+        });
+    </script>
+</body>
+</html>
